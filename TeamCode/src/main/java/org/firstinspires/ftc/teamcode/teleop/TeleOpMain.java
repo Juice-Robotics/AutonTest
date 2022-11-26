@@ -41,10 +41,10 @@ public class TeleOpMain extends LinearOpMode {
             }
 
             //DRIVE
-            if (gamepad1.right_bumper){
-                x = gamepad1.left_stick_x*0.25;
-                y = -gamepad1.left_stick_y*0.25;
-                rx = gamepad1.right_stick_x*0.25;
+            if (gamepad1.right_trigger > 0.1){
+                x = gamepad1.left_stick_x*(1-0.66*gamepad1.right_trigger);
+                y = -gamepad1.left_stick_y*(1-0.66*gamepad1.right_trigger);
+                rx = gamepad1.right_stick_x*(1-0.66*gamepad1.right_trigger);
 
             } else{
                 x = -gamepad1.left_stick_x;
@@ -54,7 +54,7 @@ public class TeleOpMain extends LinearOpMode {
             robot.setDrivePower(-x, y, rx);
 
             //PRESETS
-            if (gamepad1.dpad_down)
+            if (gamepad1.right_bumper)
                 robot.groundPreset(gamepad1.dpad_down);
             if (gamepad1.dpad_left)
                 robot.lowPreset(gamepad1.dpad_left);
