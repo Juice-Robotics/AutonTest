@@ -42,14 +42,14 @@ public class TeleOpMain extends LinearOpMode {
 
             //DRIVE
             if (gamepad1.right_bumper){
-                x = gamepad1.right_stick_x*0.25;
+                x = gamepad1.left_stick_x*0.25;
                 y = -gamepad1.left_stick_y*0.25;
-                rx = gamepad1.left_stick_x*0.25;
+                rx = gamepad1.right_stick_x*0.25;
 
             } else{
-                x = -gamepad1.right_stick_x;
+                x = -gamepad1.left_stick_x;
                 y = -gamepad1.left_stick_y;
-                rx = gamepad1.left_stick_x;
+                rx = gamepad1.right_stick_x;
             }
             robot.setDrivePower(-x, y, rx);
 

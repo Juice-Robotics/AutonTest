@@ -121,7 +121,7 @@ public class Robot {
         this.slides.runToPreset(Levels.HIGH);
         this.v4b.runToPreset(Levels.HIGH);
         this.claw.setYRotation(140);
-        this.claw.setXRotation(195);
+        this.claw.setXRotation(185);
     }
 
     public void resetAllServos() {
@@ -135,8 +135,8 @@ public class Robot {
     public void setDrivePower(double x, double y, double rx) {
         double powerFrontLeft = y + x + rx;
         double powerFrontRight = y - x - rx;
-        double powerBackLeft = y - x + rx;
-        double powerBackRight = y + x - rx;
+        double powerBackLeft = (y - x + rx) * -1;
+        double powerBackRight = (y + x - rx) * -1;
 
         if (Math.abs(powerFrontLeft) > 1 || Math.abs(powerBackLeft) > 1 ||
                 Math.abs(powerFrontRight) > 1 || Math.abs(powerBackRight) > 1) {

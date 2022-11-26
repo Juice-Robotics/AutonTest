@@ -16,7 +16,7 @@ public class V4B {
     public double groundTarget = 5;
     public double lowTarget = 200;
     public double midTarget = 160;
-    public double highTarget = 135;
+    public double highTarget = 150;
 
     public V4B(StepperServo servo1, StepperServo servo2) {
         this.v4b1 = servo1;
