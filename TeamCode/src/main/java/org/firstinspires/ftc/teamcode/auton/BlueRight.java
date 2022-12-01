@@ -25,37 +25,51 @@ public class BlueRight extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d startPose = new Pose2d(in(91), in(160), rad(-90));
+        robot = new Robot(hardwareMap, true);
+        Pose2d startPose = new Pose2d(in(91), in(160), rad(90));
+        drive.setPoseEstimate(startPose);
 
         TrajectorySequence trajectory = drive.trajectorySequenceBuilder(startPose)
-                .forward(50)
-                .splineTo(new Vector2d(31,5), 179.6)
-                .addDisplacementMarker(() -> {
+                .addTemporalMarker(1, () -> {
                     robot.highPreset(true);
-                    robot.claw.toggle();
-                    sleep(500);
-                    robot.groundPreset(true);
+                    robot.update();
                 })
+                .back(50)
                 .setReversed(true)
-                .splineTo(new Vector2d(60,12.5), 0)
-                .setReversed(false)
                 .splineTo(new Vector2d(31,5), 179.6)
+                .addTemporalMarker(3, () -> {
+                    robot.claw.toggle();
+                    robot.groundPreset(true);
+                    robot.update();
+                })
+                .setReversed(false)
+                .splineTo(new Vector2d(58,10), 0)
                 .setReversed(true)
-                .splineTo(new Vector2d(60,12.5), 0)
-                .setReversed(false)
+                .addTemporalMarker(5, () -> {
+                    robot.highPreset(true);
+                    robot.update();
+                    robot.claw.toggle();
+                })
                 .splineTo(new Vector2d(31,5), 179.6)
+                .addTemporalMarker(7, () -> {
+                    robot.claw.toggle();
+                    robot.groundPreset(true);
+                    robot.update();
+                })
+                .setReversed(false)
+                .splineTo(new Vector2d(58,10), 0)
                 .setReversed(true)
-                .splineTo(new Vector2d(60,12.5), 0)
-                .setReversed(false)
+                .addTemporalMarker(10, () -> {
+                    robot.highPreset(true);
+                    robot.update();
+                    robot.claw.toggle();
+                })
                 .splineTo(new Vector2d(31,5), 179.6)
-                .setReversed(true)
-                .splineTo(new Vector2d(60,12.5), 0)
-                .setReversed(false)
-                .splineTo(new Vector2d(31,5), 179.6)
-                .setReversed(true)
-                .splineTo(new Vector2d(60,12.5), 0)
-                .setReversed(false)
-                .splineTo(new Vector2d(31,5), 179.6)
+                .addTemporalMarker(14, () -> {
+                    robot.claw.toggle();
+                    robot.groundPreset(true);
+                    robot.update();
+                })
                 .build();
 
         waitForStart();
@@ -76,3 +90,4 @@ public class BlueRight extends LinearOpMode {
     }
 
 }
+

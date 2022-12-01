@@ -90,8 +90,8 @@ public class Slides {
 //                target = midTarget;
 //                currentLevel = level;
 //            case HIGH:
-                /*target = lowTarget;
-                currentLevel = level;*/
+               /*target = lowTarget;
+               currentLevel = level;*/
 //        }
         if (level == Levels.ZERO) {
             target = zeroTarget;

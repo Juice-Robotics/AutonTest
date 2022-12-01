@@ -90,11 +90,15 @@ public class Robot {
         this.claw.resetRotation(Axis.ALL);
     }
 
+    public void update() {
+        slides.update();
+    }
+
 
     // SLIDES + V4B + CLAW PRESETS
     public void groundPreset(boolean pad_down) {
         this.slides.runToPreset(Levels.GROUND);
-        this.claw.setXRotation(0);
+        this.claw.setXRotation(15);
         try {
             Thread.sleep(100);
         } catch (Exception e) {}

@@ -9,7 +9,7 @@ import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 public class MeepMeepTesting {
     public static void main(String[] args) {
         MeepMeep meepMeep = new MeepMeep(800);
-        Pose2d startPose = new Pose2d(in(91), in(160), rad(-90));
+        Pose2d startPose = new Pose2d(in(91), in(160), rad(90));
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 .setDimensions(16.2,14)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
@@ -17,27 +17,12 @@ public class MeepMeepTesting {
 
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(startPose)
-                                .forward(50)
-                                .splineTo(new Vector2d(31,5), 179.6)
+                                .back(50)
                                 .setReversed(true)
-                                .splineTo(new Vector2d(60,12.5), 0)
-                                .setReversed(false)
                                 .splineTo(new Vector2d(31,5), 179.6)
-                                .setReversed(true)
-                                .splineTo(new Vector2d(60,12.5), 0)
                                 .setReversed(false)
-                                .splineTo(new Vector2d(31,5), 179.6)
-                                .setReversed(true)
                                 .splineTo(new Vector2d(60,12.5), 0)
-                                .setReversed(false)
-                                .splineTo(new Vector2d(31,5), 179.6)
                                 .setReversed(true)
-                                .splineTo(new Vector2d(60,12.5), 0)
-                                .setReversed(false)
-                                .splineTo(new Vector2d(31,5), 179.6)
-                                .setReversed(true)
-                                .splineTo(new Vector2d(60,12.5), 0)
-                                .setReversed(false)
                                 .splineTo(new Vector2d(31,5), 179.6)
                                 .build()
                 );
